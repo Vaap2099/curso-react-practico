@@ -5,6 +5,7 @@ import { ShoppingCartContext } from '../../Context'
 
 function SignIn() {
   const context = useContext(ShoppingCartContext)
+  const [view, setView] = useState('user-info')
 
   //Account
   const account = localStorage.getItem('account')
@@ -48,10 +49,16 @@ function SignIn() {
     )
   }
 
+  const renderCreateUserInfo = () => {
+    //TODO : Create render view
+  }
+
+  const renderView = () => view === 'create-user-info' ? renderCreateUserInfo() : renderLogin()
+
   return (
     <Layout>
       <h1 className='font-medium text-xl text-center mb-6 w-80'>Welcome</h1>
-      {renderLogin()}
+      {renderView()}
       
     </Layout>
   )
